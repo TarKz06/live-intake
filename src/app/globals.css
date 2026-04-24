@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body { height: 100%; }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  .tnum { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .ag-card {
+    @apply rounded-card bg-surface border border-line shadow-card;
+  }
+  .ag-input {
+    @apply w-full rounded-[10px] border border-line bg-surface px-3.5 py-3 text-[15px]
+           text-ink placeholder:text-mute outline-none transition
+           hover:border-[#cbd7d3]
+           focus:border-primary focus:ring-4 focus:ring-primary-tint;
+  }
+  .ag-input[aria-invalid="true"] {
+    @apply border-danger focus:border-danger focus:ring-[#fde6e2];
+  }
+  .ag-label {
+    @apply text-[13px] font-medium text-ink-2 tracking-[0.01em];
+  }
+  .ag-label-req {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-mute;
+  }
+  .ag-label-req-on {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-ink;
+  }
+  .ag-hint {
+    @apply text-[12.5px] text-mute;
+  }
+  .ag-kicker {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-ink;
+  }
+  .ag-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-mute;
+  }
+  .ag-field-error {
+    @apply mt-1 text-[12px] text-danger;
+  }
+  .ag-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] bg-primary px-5 py-3
+           text-[14px] font-medium text-white shadow-btn transition
+           hover:bg-primary-ink
+           focus:outline-none focus:ring-4 focus:ring-primary-tint
+           disabled:cursor-not-allowed disabled:bg-[#cdd8d4] disabled:shadow-none;
+  }
+  .ag-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] bg-white border border-line px-5 py-3
+           text-[14px] font-medium text-ink-2 transition
+           hover:bg-[#f7faf8]
+           focus:outline-none focus:ring-4 focus:ring-primary-tint;
+  }
+  .ag-caret {
+    display: inline-block;
+    width: 1.5px;
+    height: 1em;
+    vertical-align: -0.1em;
+    background: #0d7d6f;
+    margin-left: 2px;
+    animation: caret 1s steps(1) infinite;
+  }
+  .ag-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium;
+  }
+  .ag-dot {
+    @apply inline-block h-2 w-2 rounded-full;
+  }
+}
+
+.ag-confetti {
+  position: fixed;
+  top: -20px;
+  left: var(--x, 50%);
+  width: var(--w, 8px);
+  height: var(--h, 14px);
+  background: var(--c, #0d7d6f);
+  border-radius: 2px;
+  animation: fall var(--d, 2.4s) cubic-bezier(.2,.6,.4,1) forwards;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-dot,
+  .animate-pulse-dot-warn,
+  .animate-caret,
+  .animate-rise,
+  .animate-draw,
+  .ag-caret,
+  .ag-confetti { animation: none !important; }
+}
