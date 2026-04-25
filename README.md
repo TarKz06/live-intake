@@ -5,8 +5,9 @@ Built with **Next.js 14 (App Router) · TailwindCSS · Socket.IO · react-hook-f
 
 - `/patient` — patient fills out the form
 - `/staff` — staff watches every session update in real time
+- `/style` — style guide: color tokens, typography, components
 
-Open both routes side by side to see the sync.
+Open `/patient` and `/staff` side by side to see the sync.
 
 ---
 
@@ -58,7 +59,8 @@ supports persistent Node processes:
     │   ├── page.tsx           # Landing
     │   ├── globals.css        # Tailwind + reusable .ag-* utility classes
     │   ├── patient/page.tsx   # Hosts <PatientForm />
-    │   └── staff/page.tsx     # Hosts <StaffView />
+    │   ├── staff/page.tsx     # Hosts <StaffView />
+    │   └── style/page.tsx     # Style guide reference
     ├── components/
     │   ├── PatientForm.tsx    # 4-step form, validation, live emits
     │   ├── StaffView.tsx      # Dashboard grid of session cards
@@ -240,6 +242,8 @@ reused anywhere the form shape is needed.
 - TH / EN locale toggle that persists in `localStorage`.
 - Confetti + checkmark draw-in animation on submit (respects
   `prefers-reduced-motion`).
+- **Style guide page** at `/style` — live reference of the design tokens
+  (colors, typography, spacing, components) sourced from `tailwind.config.ts`.
 
 ---
 
