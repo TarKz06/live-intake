@@ -53,6 +53,17 @@ const STEP_ICON: Record<StepKey, typeof User> = {
 const LANGUAGES = ["English", "Thai", "Mandarin", "Japanese", "Korean", "Spanish", "French", "Arabic", "Other"];
 const GENDER_VALUES: PatientFormValues["gender"][] = ["male", "female", "other", "prefer_not_to_say"];
 
+// Stable empty defaults — used by both useForm and the Clear handler.
+// RHF's reset() without args resets to whatever was *last* passed to reset(),
+// not to the original useForm defaults — so we always pass these explicitly.
+const EMPTY_VALUES: PatientFormValues = {
+  firstName: "", middleName: "", lastName: "", dateOfBirth: "",
+  gender: undefined as unknown as PatientFormValues["gender"],
+  phone: "", email: "", address: "",
+  preferredLanguage: "", nationality: "", religion: "",
+  emergencyContactName: "", emergencyContactRelationship: "",
+};
+
 export default function PatientForm() {
   const t = useT();
   const {
@@ -67,13 +78,7 @@ export default function PatientForm() {
   } = useForm<PatientFormValues>({
     resolver: zodResolver(patientSchema),
     mode: "onBlur",
-    defaultValues: {
-      firstName: "", middleName: "", lastName: "", dateOfBirth: "",
-      gender: undefined as unknown as PatientFormValues["gender"],
-      phone: "", email: "", address: "",
-      preferredLanguage: "", nationality: "", religion: "",
-      emergencyContactName: "", emergencyContactRelationship: "",
-    },
+    defaultValues: EMPTY_VALUES,
   });
 
   const [step, setStep] = useState(0);
@@ -171,7 +176,7 @@ export default function PatientForm() {
     if (emitDebounceRef.current) clearTimeout(emitDebounceRef.current);
     if (saveClearRef.current) clearTimeout(saveClearRef.current);
     skipNextEmitRef.current = true;
-    reset();
+    reset(EMPTY_VALUES);
     socketRef.current?.emit("patient:reset");
     setSaveState("idle");
   };
