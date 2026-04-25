@@ -19,7 +19,8 @@
     @apply w-full rounded-[10px] border border-line bg-surface px-3.5 py-3 text-[15px]
            text-ink placeholder:text-mute outline-none transition
            hover:border-[#cbd7d3]
-           focus:border-primary focus:ring-4 focus:ring-primary-tint;
+           focus:border-primary focus:ring-4 focus:ring-primary-tint
+           disabled:cursor-not-allowed disabled:bg-canvas disabled:text-mute disabled:hover:border-line;
   }
   .ag-input[aria-invalid="true"] {
     @apply border-danger focus:border-danger focus:ring-[#fde6e2];

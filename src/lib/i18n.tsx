@@ -7,7 +7,7 @@ export type Locale = "th" | "en";
 const dict = {
   th: {
     brand: "Intake System",
-    nav: { patient: "ผู้ป่วย", staff: "เจ้าหน้าที่" },
+    nav: { patient: "ผู้ป่วย", staff: "เจ้าหน้าที่", style: "Style" },
     locale: { th: "TH", en: "EN" },
     landing: {
       kicker: "ระบบลงทะเบียนผู้ป่วย • เรียลไทม์",
@@ -103,7 +103,7 @@ const dict = {
   },
   en: {
     brand: "Intake System",
-    nav: { patient: "Patient", staff: "Staff" },
+    nav: { patient: "Patient", staff: "Staff", style: "Style" },
     locale: { th: "TH", en: "EN" },
     landing: {
       kicker: "Real-time patient sign-in",

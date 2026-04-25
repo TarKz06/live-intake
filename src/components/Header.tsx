@@ -13,6 +13,7 @@ export default function Header() {
   const nav = [
     { href: "/patient", label: t.nav.patient },
     { href: "/staff", label: t.nav.staff },
+    { href: "/style", label: t.nav.style },
   ];
 
   return (
