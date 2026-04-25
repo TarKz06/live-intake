@@ -167,8 +167,17 @@ export default function PatientForm() {
     if (badStep >= 0) setStep(badStep);
   };
 
-  const onReset = () => {
+  const clearAll = () => {
+    if (emitDebounceRef.current) clearTimeout(emitDebounceRef.current);
+    if (saveClearRef.current) clearTimeout(saveClearRef.current);
+    skipNextEmitRef.current = true;
     reset();
+    socketRef.current?.emit("patient:reset");
+    setSaveState("idle");
+  };
+
+  const onReset = () => {
+    clearAll();
     setSubmitted(false);
     setStep(0);
   };
@@ -379,7 +388,7 @@ export default function PatientForm() {
                 {t.patient.back}
               </button>
             )}
-            <button type="button" className="ag-btn-ghost" onClick={() => reset()}>
+            <button type="button" className="ag-btn-ghost" onClick={clearAll}>
               <RotateCcw size={14} />
               {t.patient.clear}
             </button>

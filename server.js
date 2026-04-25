@@ -64,6 +64,19 @@ app.prepare().then(() => {
       broadcastUpdate(sessionId);
     });
 
+    // Wipe the session immediately. Used by the Clear button and "Submit
+    // another" so the server doesn't hold stale values during a fast
+    // route remount.
+    socket.on("patient:reset", () => {
+      const s = sessions.get(sessionId);
+      if (!s) return;
+      s.data = {};
+      s.status = "active";
+      s.updatedAt = Date.now();
+      delete s.submittedAt;
+      broadcastUpdate(sessionId);
+    });
+
     socket.on("patient:submit", (fullData) => {
       const s = sessions.get(sessionId);
       if (!s) return;
