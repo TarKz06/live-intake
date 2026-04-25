@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "Real-time patient intake with a live staff dashboard. Next.js · TailwindCSS · Socket.IO.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
