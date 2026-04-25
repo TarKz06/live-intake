@@ -3,11 +3,15 @@
 Real-time patient intake with a live staff dashboard.
 Built with **Next.js 14 (App Router) · TailwindCSS · Socket.IO · react-hook-form + zod · TypeScript**.
 
-- `/patient` — patient fills out the form
-- `/staff` — staff watches every session update in real time
-- `/style` — style guide: color tokens, typography, components
+**Live demo:** https://live-intake.onrender.com
+
+- [`/patient`](https://live-intake.onrender.com/patient) — patient fills out the form
+- [`/staff`](https://live-intake.onrender.com/staff) — staff watches every session update in real time
+- [`/style`](https://live-intake.onrender.com/style) — style guide: color tokens, typography, components
 
 Open `/patient` and `/staff` side by side to see the sync.
+
+> **Note:** First request after ~15 min idle may take 30–60s (Render free tier cold start).
 
 ---
 
