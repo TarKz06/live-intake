@@ -11,8 +11,7 @@ Built with **Next.js 14 (App Router) · TailwindCSS · Socket.IO · react-hook-f
 
 Open `/patient` and `/staff` side by side to see the sync.
 
-> **Note:** First request after ~15 min idle may take 30–60s (Render free tier cold start).
-
+> **Note:** The demo is deployed on Render Starter plan.
 ---
 
 ## Quick start
